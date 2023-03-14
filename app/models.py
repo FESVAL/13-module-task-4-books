@@ -12,8 +12,8 @@ class Book(db.Model):
    id = db.Column(db.Integer, primary_key=True)
    title = db.Column(db.String(100), index=True, unique=True)
    date = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-   autor_id = db.Column(db.Integer, db.ForeignKey('author.id'))
-   autors = db.relationship("Author", backref="book", lazy="dynamic")
+   author_id = db.Column(db.Integer, db.ForeignKey('author.id'))
+   authors = db.relationship("Author", backref="book", lazy="dynamic")
    def __str__(self):
        return f"<Book {self.id} {self.title}"
    
@@ -28,3 +28,11 @@ class Borrow(db.Model):
 
     def __str__(self):
         return f"< Borrow {self.id} {self.borrower}>"
+    
+#дані про книги, не код
+#books=[]
+#book_1=Book (title: 'Изучаем Python', author: 'Марк Лутц')
+#book_2=Book (title: 'Автоматизация рутинных задач с помощью Python', author: 'Эл Свейгарт')
+#book_3=Book (title: 'Python. Книга рецептов', author: 'Бизли и Джонс')
+#books.append(book_1)
+#print(books)
