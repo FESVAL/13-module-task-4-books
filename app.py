@@ -25,8 +25,7 @@ def books_add():
         
         db.session.commit()
 
-      
-    
+  
  
 @app.route("/books/", methods=["GET", "POST"]) 
 def site():
