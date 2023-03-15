@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Library</title>
+  <style>
+    table, th, tr, td {border: 1px solid black;}
+  </style>
+</head>
+
+<h2>List of books </h2>
+
+<table>
+  <thead>
+  <th>Назва книги</th>
+  <th>Автор</th>
+  <th>Дата запису</th>
+  <th>Ім'я, хто взяв</th>
+  <th>Дата отримання книги</th>
+  <th>Дата повернення книги</th>
+  </thead>
+
+{% for book in books %}
+  <tr>
+    <td><a href="/books/{{ loop.index }}">{{ book.title }}</a></td> 
+    <td>{{ author.name }}</td>
+    <td>{{ book.date }}</td>
+    <td>{{ borrow.borrower }}</td>
+    <td>{{ borrow.borrower_date }}</td>
+    <td>{{ borrow.return_date }}</td>
+
+  </tr>
+{% endfor %}
+</table>
+<div>
+  <h2> Додай нову книгу: </h2>
+  <form method="POST" action="/books/">
+    {{ form.hidden_tag() }}
+    <table>
+      {% for field in form if field.widget.input_type != 'hidden' %}
+        <tr>
+          <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+          <td>{{ field }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    <input type="submit" value="Go">
+  </form>
+</div>
+</body>
+</html>

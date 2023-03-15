@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Library</title>
+  <style>
+    table, th, tr, td {border: 1px solid black;}
+  </style>
+</head>
+<body> 
+<h2>List of books </h2>
+
+<table>
+  <thead>
+  <th>Автор</th>
+  <th>Назва книги </th>
+  <th>Дата запису</th>
+  <th>Ім'я, хто взяв</th>
+  <th>Дата отримання книги</th>
+  <th>Дата повернення книги</th>
+  </thead>
+
+  <h3>Authors</h3>
+  {% for author in authors %}
+  <td>{{ author.name }}</td>
+  {% endfor %}
+  
+  <h3>Books</h3>
+  {% for book in books %}
+  <td>{{ book.title }}</td> 
+  <td>{{ book.date }}</td>
+  {% endfor %} 
+  
+  <h3>Borrows</h3>
+  {% for borrow in borrows %}
+  <td>{{ borrow.borrower }}</td>
+  <td>{{ borrow.borrower_date }}</td>
+  <td>{{ borrow.return_date }}</td>
+  {% endfor %}
+  </tr>
+
+</body>
+</html>
